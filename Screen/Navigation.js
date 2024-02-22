@@ -23,7 +23,11 @@ const Navigation = () => {
         screenOptions={{
           headerShown: false,
           tabBarShowLabel: false,
+<<<<<<< HEAD
           tabBarActiveTintColor: "#FDAE03",
+=======
+          tabBarActiveTintColor: "#2889eb",
+>>>>>>> 6f3b905c5d656c27dba4b833966fc5583962085d
           tabBarInactiveTintColor: "#a8a8aa",
           tabBarStyle: { height: 70 },
         }}

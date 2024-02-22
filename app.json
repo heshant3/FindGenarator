@@ -25,6 +25,7 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
+<<<<<<< HEAD
       "expo-font",
       [
         "expo-barcode-scanner",
@@ -32,6 +33,9 @@
           "cameraPermission": "Allow $(PRODUCT_NAME) to access camera."
         }
       ]
+=======
+      "expo-font"
+>>>>>>> 6f3b905c5d656c27dba4b833966fc5583962085d
     ]
   }
 }

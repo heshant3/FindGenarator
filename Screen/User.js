@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { StyleSheet, Text, View, SafeAreaView, StatusBar } from "react-native";
 import React from "react";
 import { ScaledSheet } from "react-native-size-matters";
@@ -75,3 +76,17 @@ const styles = ScaledSheet.create({
     fontFamily: "Inter_500Medium",
   },
 });
+=======
+import { StyleSheet, Text, View } from "react-native";
+import React from "react";
+
+export default function User() {
+  return (
+    <View>
+      <Text>User</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({});
+>>>>>>> 6f3b905c5d656c27dba4b833966fc5583962085d

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import {
   SafeAreaView,
@@ -10,6 +11,10 @@ import {
   Modal,
   Button,
 } from "react-native";
+=======
+import { SafeAreaView, StyleSheet, Text, View, StatusBar } from "react-native";
+import React from "react";
+>>>>>>> 6f3b905c5d656c27dba4b833966fc5583962085d
 import {
   useFonts,
   Inter_400Regular,
@@ -18,6 +23,7 @@ import {
 } from "@expo-google-fonts/inter";
 import { ScaledSheet } from "react-native-size-matters";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+<<<<<<< HEAD
 import { Camera } from "expo-camera";
 import { ref, push } from "firebase/database";
 import { db } from "../config";
@@ -62,11 +68,18 @@ export default function Penalties() {
 
   // Load fonts asynchronously
   const [fontsLoaded] = useFonts({
+=======
+
+export default function Penalties() {
+  // * Font add part
+  let [fontsLoaded, fontError] = useFonts({
+>>>>>>> 6f3b905c5d656c27dba4b833966fc5583962085d
     Inter_400Regular,
     Inter_500Medium,
     Inter_300Light,
   });
 
+<<<<<<< HEAD
   if (!fontsLoaded) {
     // Return a loading indicator or null while fonts are loading
     return null;
@@ -116,6 +129,12 @@ export default function Penalties() {
       });
   };
 
+=======
+  if (!fontsLoaded && !fontError) {
+    return null;
+  }
+
+>>>>>>> 6f3b905c5d656c27dba4b833966fc5583962085d
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor="#FFFAF4" />
@@ -123,6 +142,7 @@ export default function Penalties() {
         <Text style={styles.HeadText}>Penalties</Text>
       </View>
       <View style={styles.Middle}>
+<<<<<<< HEAD
         <TouchableOpacity
           style={styles.Box}
           onLongPress={() => {
@@ -244,6 +264,18 @@ export default function Penalties() {
             <Text style={styles.SubmitText}>Submit</Text>
           </TouchableHighlight>
         </View>
+=======
+        <View style={styles.Box}></View>
+        <MaterialCommunityIcons
+          name="qrcode-scan"
+          size={44}
+          color="#FDAE03"
+          style={styles.Qr}
+        />
+      </View>
+      <View style={styles.bottom}>
+        <Text style={styles.BottomText}>Penalties</Text>
+>>>>>>> 6f3b905c5d656c27dba4b833966fc5583962085d
       </View>
     </SafeAreaView>
   );
@@ -283,6 +315,7 @@ const styles = ScaledSheet.create({
     height: 150,
     elevation: 10,
     borderRadius: 30,
+<<<<<<< HEAD
     backgroundColor: "#FFFF",
     shadowColor: "#FDAE03",
     justifyContent: "center",
@@ -305,12 +338,24 @@ const styles = ScaledSheet.create({
 
   BottomText: {
     marginTop: 30,
+=======
+    backgroundColor: "#FFFAF4",
+    shadowColor: "#FDAE03",
+  },
+  Qr: {
+    paddingTop: 30,
+    alignSelf: "center",
+  },
+
+  BottomText: {
+>>>>>>> 6f3b905c5d656c27dba4b833966fc5583962085d
     fontSize: "25@mvs",
     color: "#5B5B5B",
     alignSelf: "flex-start",
     paddingLeft: 30,
     fontFamily: "Inter_500Medium",
   },
+<<<<<<< HEAD
 
   TextBox: {
     alignSelf: "flex-start",
@@ -428,4 +473,6 @@ const styles = ScaledSheet.create({
     overflow: "hidden",
     backgroundColor: "#F194FF",
   },
+=======
+>>>>>>> 6f3b905c5d656c27dba4b833966fc5583962085d
 });
