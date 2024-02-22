@@ -89,9 +89,11 @@ export default function History() {
               style={styles.Icon1}
             />
 
-            <Text style={styles.modalDataDateText}>{selectedPenalty.Date}</Text>
             {selectedPenalty && (
               <View style={styles.modalDataText}>
+                <Text style={styles.modalDataDateText}>
+                  {selectedPenalty.Date}
+                </Text>
                 <Text style={styles.modalDataTextValue}>
                   {selectedPenalty.Name}
                 </Text>
