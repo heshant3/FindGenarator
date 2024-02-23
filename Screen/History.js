@@ -64,32 +64,25 @@ export default function History() {
               // Show skeleton loading effect while Firebase data is loading
               <Skeleton.Group show={true}>
                 {[1, 2, 3, 4, 5, 6].map((_, index) => (
-                  <TouchableOpacity style={styles.Box} key={index}>
+                  <TouchableOpacity style={styles.BoxSkeleton} key={index}>
                     <Skeleton
-                      height={"30%"}
+                      height={24}
                       width={34}
                       {...SkeletonCommonProps}
-                    >
-                      <FontAwesome
-                        name="id-card-o"
-                        size={24}
-                        color="#FDAE03"
-                        style={styles.Icon}
-                      />
-                    </Skeleton>
+                    ></Skeleton>
                     <View style={{ marginLeft: 10 }}>
-                      <Skeleton height={24} width={55} {...SkeletonCommonProps}>
-                        <Text style={styles.NameText}>Name:</Text>
-                      </Skeleton>
+                      <Skeleton
+                        height={24}
+                        width={55}
+                        {...SkeletonCommonProps}
+                      ></Skeleton>
                     </View>
                     <View style={{ marginLeft: 10 }}>
                       <Skeleton
                         height={24}
                         width={130}
                         {...SkeletonCommonProps}
-                      >
-                        <Text style={styles.NameDataText}>Data</Text>
-                      </Skeleton>
+                      ></Skeleton>
                     </View>
                   </TouchableOpacity>
                 ))}
@@ -227,6 +220,22 @@ const styles = ScaledSheet.create({
     alignItems: "center",
     marginBottom: 20,
   },
+
+  BoxSkeleton: {
+    borderWidth: 1,
+    borderColor: "#FDAE03",
+    flexDirection: "row",
+    width: "80%",
+    height: 90,
+    backgroundColor: "#ffff",
+    borderRadius: 20,
+    // elevation: 4,
+    shadowColor: "#FDAE03",
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 20,
+  },
+
   Icon: {
     marginTop: 1,
   },
