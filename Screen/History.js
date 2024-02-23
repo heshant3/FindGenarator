@@ -44,7 +44,7 @@ export default function History() {
 
   const SkeletonCommonProps = {
     colorMode: "light",
-    transition: { type: "timing", duration: 2000 },
+    transition: { type: "timing", duration: 3000 },
     backgroundColor: "#FFFAF4",
   };
 

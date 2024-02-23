@@ -22,7 +22,7 @@ function Login() {
 
     onValue(LoginRef, (snapshot) => {
       const data = snapshot.val();
-      if (data && typeof data === "object" in data) {
+      if (data && typeof data === "object" && "Value" in data) {
         setLogin(data.Value);
       }
     });
