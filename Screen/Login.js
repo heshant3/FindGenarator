@@ -41,7 +41,8 @@ function Login() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="dark-content" backgroundColor="#FDAE03" />
+      <StatusBar translucent barStyle="light" backgroundColor="transparent" />
+
       <View style={styles.Body}>
         <Image
           style={[styles.image, StyleSheet.absoluteFillObject]}
