@@ -14,11 +14,14 @@ import { ScaledSheet } from "react-native-size-matters";
 import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
 import { ref, onValue } from "firebase/database"; // Import Firebase database modules
 import { db } from "../config"; // Assuming you have a Firebase database configuration file
+import { MotiView } from "moti";
+import { Skeleton } from "moti/skeleton";
 
 export default function History() {
   const [penaltyData, setPenaltyData] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedPenalty, setSelectedPenalty] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   // Fetch penalty data from Firebase when the component mounts
   useEffect(() => {
@@ -29,6 +32,7 @@ export default function History() {
         // Convert the object to an array of penalty objects
         const penaltyArray = Object.values(firebaseData);
         setPenaltyData(penaltyArray);
+        setLoading(false);
       }
     });
   }, []);
@@ -36,6 +40,12 @@ export default function History() {
   const handleBoxPress = (penalty) => {
     setSelectedPenalty(penalty);
     setModalVisible(true);
+  };
+
+  const SkeletonCommonProps = {
+    colorMode: "light",
+    transition: { type: "timing", duration: 2000 },
+    backgroundColor: "#FFFAF4",
   };
 
   return (
@@ -50,25 +60,64 @@ export default function History() {
           showsVerticalScrollIndicator={false}
         >
           <View style={styles.BodyBox}>
-            {penaltyData.map((penalty, index) => (
-              <TouchableOpacity
-                style={styles.Box}
-                key={index}
-                onPress={() => handleBoxPress(penalty)}
-              >
-                <FontAwesome
-                  name="id-card-o"
-                  size={24}
-                  color="#FDAE03"
-                  style={styles.Icon}
-                />
-                <Text style={styles.NameText}>{"  "} Name:</Text>
-                <Text style={styles.NameDataText}>
-                  {""} {penalty.Name}
-                </Text>
-                {/* Display other penalty data here */}
-              </TouchableOpacity>
-            ))}
+            {loading ? (
+              // Show skeleton loading effect while Firebase data is loading
+              <Skeleton.Group show={true}>
+                {[1, 2, 3, 4, 5, 6].map((_, index) => (
+                  <TouchableOpacity style={styles.Box} key={index}>
+                    <Skeleton
+                      height={"30%"}
+                      width={34}
+                      {...SkeletonCommonProps}
+                    >
+                      <FontAwesome
+                        name="id-card-o"
+                        size={24}
+                        color="#FDAE03"
+                        style={styles.Icon}
+                      />
+                    </Skeleton>
+                    <View style={{ marginLeft: 10 }}>
+                      <Skeleton height={24} width={55} {...SkeletonCommonProps}>
+                        <Text style={styles.NameText}>Name:</Text>
+                      </Skeleton>
+                    </View>
+                    <View style={{ marginLeft: 10 }}>
+                      <Skeleton
+                        height={24}
+                        width={130}
+                        {...SkeletonCommonProps}
+                      >
+                        <Text style={styles.NameDataText}>Data</Text>
+                      </Skeleton>
+                    </View>
+                  </TouchableOpacity>
+                ))}
+              </Skeleton.Group>
+            ) : (
+              // Show actual penalty data when Firebase data loading is finished
+              penaltyData.map((penalty, index) => (
+                <TouchableOpacity
+                  style={styles.Box}
+                  key={index}
+                  onPress={() => handleBoxPress(penalty)}
+                >
+                  <FontAwesome
+                    name="id-card-o"
+                    size={24}
+                    color="#FDAE03"
+                    style={styles.Icon}
+                  />
+                  <View style={{ marginLeft: 10 }}>
+                    <Text style={styles.NameText}>Name:</Text>
+                  </View>
+                  <View style={{ marginLeft: 10 }}>
+                    <Text style={styles.NameDataText}>{penalty.Name}</Text>
+                  </View>
+                  {/* Display other penalty data here */}
+                </TouchableOpacity>
+              ))
+            )}
           </View>
         </ScrollView>
       </View>
@@ -189,8 +238,8 @@ const styles = ScaledSheet.create({
   NameText: {
     fontSize: "20@mvs",
     color: "#848484",
-    alignSelf: "center",
     fontFamily: "Inter_400Regular",
+    // backgroundColor: "red",
   },
   NameDataText: {
     fontSize: "20@mvs",
