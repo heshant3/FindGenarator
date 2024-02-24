@@ -48,7 +48,12 @@ function Login() {
           style={[styles.image, StyleSheet.absoluteFillObject]}
           source={require("../assets/BK.png")}
         />
-        <BlurView intensity={100} style={styles.Box}>
+        <BlurView
+          experimentalBlurMethod="dimezisBlurView"
+          intensity={20}
+          tint="systemChromeMaterial"
+          style={styles.Box}
+        >
           <View style={styles.BoxContain}>
             <Ionicons name="finger-print-sharp" size={54} color="#FDAE03" />
             <Text style={styles.Text}>Scan Your Fingerprint</Text>
@@ -85,7 +90,7 @@ const styles = StyleSheet.create({
     height: "24%",
     borderRadius: 20,
     borderColor: "#ffff",
-    borderWidth: 2,
+    borderWidth: 1,
   },
 
   BoxContain: {
