@@ -7,6 +7,7 @@ import {
   Inter_500Medium,
   Inter_300Light,
 } from "@expo-google-fonts/inter";
+import { FontAwesome } from "@expo/vector-icons";
 
 export default function User() {
   let [fontsLoaded, fontError] = useFonts({
@@ -25,7 +26,9 @@ export default function User() {
         <Text style={styles.HeadText}>User Data</Text>
       </View>
       <View style={styles.Body}>
-        <View style={styles.Circle}></View>
+        <View style={styles.Circle}>
+          <FontAwesome name="user-circle-o" size={100} color="#FDAE03" />
+        </View>
         <Text style={styles.Text}>Jony Amex</Text>
         <Text style={styles.Text}>35 Years</Text>
         <Text style={styles.Text}>659587604038V</Text>
@@ -61,10 +64,12 @@ const styles = ScaledSheet.create({
     width: 100,
     height: 100,
     borderRadius: 50,
-    backgroundColor: "#D9D9D9",
+
     alignSelf: "center",
     marginBottom: 30,
     marginTop: 30,
+    justifyContent: "center",
+    alignItems: "center",
   },
 
   Text: {

@@ -19,7 +19,7 @@ import {
 import { ScaledSheet } from "react-native-size-matters";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Camera } from "expo-camera";
-import { ref, push } from "firebase/database";
+import { ref, push, onValue } from "firebase/database";
 import { db } from "../config";
 
 export default function Penalties() {
@@ -34,6 +34,16 @@ export default function Penalties() {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [id, setId] = useState("");
+  const [alcoholLevel, setAlcoholLevel] = useState(null);
+  const [iconColor, setIconColor] = useState("#FDAE03"); // Initial color
+
+  useEffect(() => {
+    const alcoholRef = ref(db, "alcohol_Sensor/Level");
+    onValue(alcoholRef, (snapshot) => {
+      const data = snapshot.val();
+      setAlcoholLevel(data);
+    });
+  }, []);
 
   useEffect(() => {
     const getCameraPermissions = async () => {
@@ -54,7 +64,7 @@ export default function Penalties() {
         setModalVisible(false); // Close the modal automatically
       } else {
         // Show an alert if the scanned data does not match the expected value
-        alert("Please tap Valid license card");
+        alert("Please tap Valid license card.");
         setModalVisible(false); // Close the modal automatically
       }
     }
@@ -155,13 +165,15 @@ export default function Penalties() {
             setId("");
             setModalVisible(true);
           }}
-          underlayColor={"#928F8A"}
+          underlayColor="#928F8A"
           style={styles.QRbtn}
+          onPressIn={() => setIconColor("white")} // Change color to white when pressed
+          onPressOut={() => setIconColor("#FDAE03")} // Change color back to original when released
         >
           <MaterialCommunityIcons
             name="qrcode-scan"
             size={44}
-            color="#FDAE03"
+            color={iconColor}
             style={styles.Qr}
           />
         </TouchableHighlight>
@@ -240,6 +252,17 @@ export default function Penalties() {
               onPress={() => setChecked5(!checked5)}
             />
           </View>
+
+          {/* Conditional rendering for alcohol level */}
+          {checked5 && (
+            <>
+              <View style={styles.AlcoholListItem}>
+                <Text style={styles.AlcoholListText}>Alcohol Percentage :</Text>
+                <Text style={styles.AlcoholListText}>{alcoholLevel}%</Text>
+              </View>
+            </>
+          )}
+
           <TouchableHighlight
             onPress={name ? handleOkPress : null}
             underlayColor={"#928F8A"}
@@ -342,10 +365,24 @@ const styles = ScaledSheet.create({
     justifyContent: "space-between",
   },
 
+  AlcoholListItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+
   ListText: {
     fontSize: "20@mvs",
     color: "#5B5B5B",
     fontFamily: "Inter_400Regular",
+    alignSelf: "flex-start",
+  },
+
+  AlcoholListText: {
+    marginTop: -20,
+    fontSize: "18@mvs",
+    color: "#5B5B5B",
+    fontFamily: "Inter_300Light",
     alignSelf: "flex-start",
   },
 
