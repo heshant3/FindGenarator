@@ -36,6 +36,7 @@ export default function Penalties() {
   const [id, setId] = useState("");
   const [alcoholLevel, setAlcoholLevel] = useState(null);
   const [iconColor, setIconColor] = useState("#FDAE03"); // Initial color
+  console.log(alcoholLevel);
 
   useEffect(() => {
     const alcoholRef = ref(db, "alcohol_Sensor/Level");

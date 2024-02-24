@@ -146,25 +146,33 @@ export default function History() {
                 <Text style={styles.modalDataTextValue}>
                   {selectedPenalty.ID}
                 </Text>
-                <Text style={styles.modalDataHeadText}>Penalty List</Text>
+                <Text style={styles.modalDataHeadText}>
+                  Penalty List{"           "}
+                </Text>
                 {selectedPenalty.Speeding_offenses && (
-                  <Text style={styles.PenaltyText}>Speeding offenses</Text>
+                  <Text style={styles.PenaltyText}>
+                    • Speeding offenses{"      "}
+                  </Text>
                 )}
                 {selectedPenalty.Careless_driving && (
-                  <Text style={styles.PenaltyText}>Careless driving</Text>
+                  <Text style={styles.PenaltyText}>
+                    • Careless driving {"   "}
+                  </Text>
                 )}
                 {selectedPenalty.Driving_without_valid_license && (
                   <Text style={styles.PenaltyText}>
-                    Driving without valid license{" "}
+                    • Driving without valid license{" "}
                   </Text>
                 )}
                 {selectedPenalty.Failure_to_wear_a_seatbelt && (
                   <Text style={styles.PenaltyText}>
-                    Failure to wear a seatbelt{" "}
+                    • Failure to wear a seatbelt{" "}
                   </Text>
                 )}
                 {selectedPenalty.Drunk_driving && (
-                  <Text style={styles.PenaltyText}>Drunk driving</Text>
+                  <Text style={styles.PenaltyText}>
+                    • Drunk driving{"           "}
+                  </Text>
                 )}
               </View>
             )}
@@ -317,6 +325,7 @@ const styles = ScaledSheet.create({
   },
 
   modalDataHeadText: {
+    marginLeft: -10,
     marginTop: 10,
     fontSize: "20@mvs",
     color: "#FDAE03",
@@ -333,6 +342,7 @@ const styles = ScaledSheet.create({
   },
 
   PenaltyText: {
+    marginLeft: -10,
     marginTop: 5,
     fontSize: "16@mvs",
     color: "#464646",
