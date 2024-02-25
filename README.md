@@ -1,4 +1,4 @@
-# Bus Minder Mobille App
+# Find Generator Mobille App
 
 "Introducing Find Generator, the ultimate tool for police traffic enforcement to track drivers' penalties and ensure road safety. Built with **React Native** and powered by **Firebase** for seamless data management, this app leverages **Arduino** for its IoT capabilities.
 
