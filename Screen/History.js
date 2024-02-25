@@ -124,61 +124,70 @@ export default function History() {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <FontAwesome5
-              name="id-card-alt"
-              size={24}
-              color="#FDAE03"
-              style={styles.Icon1}
-            />
-
+            <View alignItems="center">
+              <FontAwesome5
+                name="id-card-alt"
+                size={24}
+                color="#FDAE03"
+                style={styles.Icon1}
+              />
+            </View>
             {selectedPenalty && (
-              <View style={styles.modalDataText}>
-                <Text style={styles.modalDataDateText}>
-                  {selectedPenalty.Date}
-                </Text>
-                <Text style={styles.modalDataTextValue}>
-                  {selectedPenalty.Name}
-                </Text>
-                <Text style={styles.modalDataTextValue}>
-                  {selectedPenalty.Age} Years
-                </Text>
+              <View>
+                <View style={styles.modalDataText}>
+                  <Text style={styles.modalDataTextValue}>
+                    {selectedPenalty.Name}
+                  </Text>
+                  <Text style={styles.modalDataTextValue}>
+                    {selectedPenalty.Age} Years
+                  </Text>
 
-                <Text style={styles.modalDataTextValue}>
-                  {selectedPenalty.ID}
-                </Text>
-                <Text style={styles.modalDataHeadText}>
-                  Penalty List{"           "}
-                </Text>
-                {selectedPenalty.Speeding_offenses && (
-                  <Text style={styles.PenaltyText}>
-                    • Speeding offenses{"      "}
+                  <Text style={styles.modalDataTextValue}>
+                    {selectedPenalty.ID}
                   </Text>
-                )}
-                {selectedPenalty.Careless_driving && (
-                  <Text style={styles.PenaltyText}>
-                    • Careless driving {"   "}
+                  <Text style={styles.modalDataDateText}>
+                    {selectedPenalty.Date}
                   </Text>
-                )}
-                {selectedPenalty.Driving_without_valid_license && (
-                  <Text style={styles.PenaltyText}>
-                    • Driving without valid license{" "}
+                </View>
+                <View>
+                  <Text style={styles.modalDataHeadText}>
+                    Penalty List{"           "}
                   </Text>
-                )}
-                {selectedPenalty.Failure_to_wear_a_seatbelt && (
-                  <Text style={styles.PenaltyText}>
-                    • Failure to wear a seatbelt{" "}
-                  </Text>
-                )}
-                {selectedPenalty.Drunk_driving && (
-                  <Text style={styles.PenaltyText}>
-                    • Drunk driving{"           "}
-                  </Text>
-                )}
+                  {selectedPenalty.Speeding_offenses && (
+                    <Text style={styles.PenaltyText}>
+                      • Speeding offenses{"      "}
+                    </Text>
+                  )}
+                  {selectedPenalty.Careless_driving && (
+                    <Text style={styles.PenaltyText}>
+                      • Careless driving {"   "}
+                    </Text>
+                  )}
+                  {selectedPenalty.Driving_without_valid_license && (
+                    <Text style={styles.PenaltyText}>
+                      • Driving without valid license{" "}
+                    </Text>
+                  )}
+                  {selectedPenalty.Failure_to_wear_a_seatbelt && (
+                    <Text style={styles.PenaltyText}>
+                      • Failure to wear a seatbelt{" "}
+                    </Text>
+                  )}
+                  {selectedPenalty.Drunk_driving && (
+                    <Text style={styles.PenaltyText}>
+                      • Drunk driving{"           "}
+                    </Text>
+                  )}
+                </View>
               </View>
             )}
 
             <TouchableHighlight
-              style={{ ...styles.openButton, backgroundColor: "#FDAE03" }}
+              style={{
+                ...styles.openButton,
+                backgroundColor: "#FDAE03",
+                alignSelf: "center",
+              }}
               underlayColor={"#fddc95"}
               onPress={() => {
                 setModalVisible(!modalVisible);
@@ -274,12 +283,12 @@ const styles = ScaledSheet.create({
   },
   modalView: {
     height: "auto",
-    width: "70%",
+    width: "80%",
     margin: 20,
     backgroundColor: "white",
     borderRadius: 20,
     padding: 25,
-    alignItems: "center",
+
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -290,10 +299,6 @@ const styles = ScaledSheet.create({
     elevation: 5,
   },
 
-  btnView: {
-    alignContent: "center",
-    backgroundColor: "red",
-  },
   openButton: {
     marginTop: 40,
     alignItems: "center",
@@ -317,16 +322,14 @@ const styles = ScaledSheet.create({
   },
 
   modalDataTextValue: {
-    marginBottom: 5,
-    fontSize: "20@mvs",
+    fontSize: "18@mvs",
     color: "#464646",
     alignSelf: "center",
     fontFamily: "Inter_500Medium",
   },
 
   modalDataHeadText: {
-    marginLeft: -10,
-    marginTop: 10,
+    marginTop: 20,
     fontSize: "20@mvs",
     color: "#FDAE03",
     alignSelf: "flex-start",
@@ -334,15 +337,14 @@ const styles = ScaledSheet.create({
   },
 
   modalDataDateText: {
-    marginBottom: 20,
+    marginBottom: 10,
     fontSize: "15@mvs",
-    color: "#464646",
+    color: "#a7a7a7",
     alignSelf: "center",
     fontFamily: "Inter_500Medium",
   },
 
   PenaltyText: {
-    marginLeft: -10,
     marginTop: 5,
     fontSize: "16@mvs",
     color: "#464646",

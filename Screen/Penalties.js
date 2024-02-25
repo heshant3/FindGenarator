@@ -21,6 +21,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Camera } from "expo-camera";
 import { ref, push, onValue } from "firebase/database";
 import { db } from "../config";
+import { BlurView } from "expo-blur";
 
 export default function Penalties() {
   const [checked1, setChecked1] = useState(false);
@@ -114,7 +115,7 @@ export default function Penalties() {
     // Push data to Firebase with a unique ID
     push(penaltiesRef, penaltyData)
       .then((newRef) => {
-        console.log("Data added with ID: ", newRef.key);
+        // console.log("Data added with ID: ", newRef.key);
         // Reset states after data is sent
         setName("");
         setAge("");
@@ -127,7 +128,8 @@ export default function Penalties() {
         alert("Data submitted successfully!");
       })
       .catch((error) => {
-        console.error("Error adding data: ", error);
+        // console.error("Error adding data: ", error);
+        alert("Error adding data");
       });
   };
 
@@ -186,7 +188,12 @@ export default function Penalties() {
           onRequestClose={() => setModalVisible(!modalVisible)}
         >
           <View style={styles.centeredView}>
-            <View style={styles.modalView}>
+            <BlurView
+              experimentalBlurMethod="dimezisBlurView"
+              intensity={50}
+              tint="systemThinMaterialDark"
+              style={styles.modalView}
+            >
               <View style={styles.Cam}>
                 <Camera
                   onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
@@ -201,7 +208,7 @@ export default function Penalties() {
               >
                 <Text style={styles.textStyle}>Close</Text>
               </TouchableHighlight>
-            </View>
+            </BlurView>
           </View>
         </Modal>
       </View>
@@ -332,8 +339,8 @@ const styles = ScaledSheet.create({
   },
 
   BottomText: {
-    marginTop: 30,
-    fontSize: "25@mvs",
+    marginTop: 10,
+    fontSize: "25@ms0.1",
     color: "#5B5B5B",
     alignSelf: "flex-start",
     paddingLeft: 30,
@@ -373,7 +380,7 @@ const styles = ScaledSheet.create({
   },
 
   ListText: {
-    fontSize: "20@mvs",
+    fontSize: "20@mvs0.1",
     color: "#5B5B5B",
     fontFamily: "Inter_400Regular",
     alignSelf: "flex-start",
@@ -429,22 +436,16 @@ const styles = ScaledSheet.create({
   modalView: {
     height: "60%",
     width: "80%",
-
-    backgroundColor: "white",
+    overflow: "hidden",
     borderRadius: 20,
     paddingTop: 35,
     alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
+    backgroundColor: "transparent",
+    borderWidth: 1.5,
+    borderColor: "white",
   },
   openButton: {
-    marginTop: 20,
+    marginTop: 40,
     backgroundColor: "#FDAE03",
     alignSelf: "center",
     justifyContent: "center",

@@ -29,9 +29,40 @@ export default function User() {
         <View style={styles.Circle}>
           <FontAwesome name="user-circle-o" size={100} color="#FDAE03" />
         </View>
-        <Text style={styles.Text}>Jony Amex</Text>
-        <Text style={styles.Text}>35 Years</Text>
-        <Text style={styles.Text}>659587604038V</Text>
+        <View style={styles.Box}>
+          <View style={styles.BodyBox}>
+            <View style={styles.BodyBoxContain}>
+              <Text style={styles.Text}>Name: </Text>
+              <Text style={styles.Text2} paddingLeft={40}>
+                Jony Amex
+              </Text>
+            </View>
+            <View style={styles.BodyBoxContain}>
+              <Text style={styles.Text}>Age: </Text>
+              <Text style={styles.Text2} paddingLeft={58}>
+                35 year
+              </Text>
+            </View>
+            <View style={styles.BodyBoxContain}>
+              <Text style={styles.Text}>User ID: </Text>
+              <Text style={styles.Text2} paddingLeft={25}>
+                6595876038V
+              </Text>
+            </View>
+            <View style={styles.BodyBoxContain}>
+              <Text style={styles.Text}>Police ID:</Text>
+              <Text style={styles.Text2} paddingLeft={20}>
+                3467754
+              </Text>
+            </View>
+            <View style={styles.BodyBoxContain}>
+              <Text style={styles.Text}>Address: </Text>
+              <Text style={styles.Text2} paddingLeft={19}>
+                Colombo
+              </Text>
+            </View>
+          </View>
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -61,22 +92,54 @@ const styles = ScaledSheet.create({
   },
 
   Circle: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-
+    width: 120,
+    height: 120,
+    borderRadius: 100,
     alignSelf: "center",
-    marginBottom: 30,
+    marginBottom: 40,
     marginTop: 30,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "#FFFF",
+    elevation: 10,
+    shadowColor: "#FDAE03",
+  },
+
+  Box: {
+    alignSelf: "center",
+    width: "90%",
+    height: 250,
+    elevation: 10,
+    borderRadius: 30,
+    backgroundColor: "#FFFF",
+    shadowColor: "#FDAE03",
+    justifyContent: "center",
+  },
+
+  BodyBox: {
+    flex: 1,
+    alignSelf: "center",
+    width: "80%",
+    height: 250,
+    justifyContent: "center",
+  },
+
+  BodyBoxContain: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
   },
 
   Text: {
     marginTop: 10,
-    fontSize: "25@mvs",
+    fontSize: "20@mvs",
     color: "#5B5B5B",
-    alignSelf: "center",
-    fontFamily: "Inter_500Medium",
+    fontFamily: "Inter_400Regular",
+  },
+
+  Text2: {
+    marginTop: 10,
+    fontSize: "20@mvs",
+    color: "#000000",
+    fontFamily: "Inter_400Regular",
   },
 });

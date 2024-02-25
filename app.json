@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "FindGenarator",
+    "name": "Find Genarator",
     "slug": "FindGenarator",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -11,15 +11,25 @@
       "resizeMode": "contain",
       "backgroundColor": "#FFFAF4"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "Allow $(PRODUCT_NAME) to access camera.",
+        "NSMicrophoneUsageDescription": "Allow $(PRODUCT_NAME) to access your microphone"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFAF4"
-      }
+      },
+      "permissions": [
+        "android.permission.CAMERA"
+      ],
+      "package": "com.heshant3.FindGenarator"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -32,6 +42,11 @@
           "cameraPermission": "Allow $(PRODUCT_NAME) to access camera."
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "0f74718a-a4c5-41e4-b063-2e2de4226256"
+      }
+    }
   }
 }
