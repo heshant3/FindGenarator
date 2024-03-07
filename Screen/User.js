@@ -1,4 +1,11 @@
-import { StyleSheet, Text, View, SafeAreaView, StatusBar } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  StatusBar,
+  TouchableOpacity,
+} from "react-native";
 import React from "react";
 import { ScaledSheet } from "react-native-size-matters";
 import {
@@ -8,6 +15,7 @@ import {
   Inter_300Light,
 } from "@expo-google-fonts/inter";
 import { FontAwesome } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 export default function User() {
   let [fontsLoaded, fontError] = useFonts({
@@ -19,6 +27,16 @@ export default function User() {
   if (!fontsLoaded && !fontError) {
     return null;
   }
+
+  const navigation = useNavigation();
+
+  const handleLogout = () => {
+    // Perform logout actions here, such as clearing user data from AsyncStorage or logging out from your authentication provider
+
+    // Navigate back to the Login screen
+    navigation.navigate("Login");
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor="#FFFAF4" />
@@ -62,6 +80,11 @@ export default function User() {
               </Text>
             </View>
           </View>
+        </View>
+        <View style={styles.SubmitbtnView}>
+          <TouchableOpacity style={styles.Submitbtn} onPress={handleLogout}>
+            <Text style={styles.SubmitText}>Log out</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>
@@ -141,5 +164,33 @@ const styles = ScaledSheet.create({
     fontSize: "20@mvs",
     color: "#000000",
     fontFamily: "Inter_400Regular",
+  },
+
+  SubmitbtnView: {
+    flex: 1,
+    alignSelf: "center",
+    width: "80%",
+
+    justifyContent: "center",
+  },
+
+  Submitbtn: {
+    backgroundColor: "#FDAE03",
+    alignSelf: "center",
+    justifyContent: "center",
+    width: "80%",
+    height: 60,
+    borderColor: "transparent",
+    borderRadius: 10,
+    fontSize: 42,
+    marginTop: 20,
+    marginBottom: 20,
+  },
+
+  SubmitText: {
+    alignSelf: "center",
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#ffffff",
   },
 });
