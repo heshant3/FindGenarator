@@ -83,7 +83,7 @@ export default function User() {
         </View>
         <View style={styles.SubmitbtnView}>
           <TouchableOpacity style={styles.Submitbtn} onPress={handleLogout}>
-            <Text style={styles.SubmitText}>Logout</Text>
+            <Text style={styles.SubmitText}>Log out</Text>
           </TouchableOpacity>
         </View>
       </View>

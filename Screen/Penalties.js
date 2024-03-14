@@ -60,9 +60,14 @@ export default function Penalties() {
     if (!scanned) {
       setScanned(true);
       if (data === "19970512") {
-        setName("Jhone Williyam");
-        setAge("36");
-        setId("19970512");
+        setName("Nadun Asiri");
+        setAge("20");
+        setId("B4155467");
+        setModalVisible(false); // Close the modal automatically
+      } else if (data === "19970513") {
+        setName("Nisal Naween");
+        setAge("21");
+        setId("B5319648");
         setModalVisible(false); // Close the modal automatically
       } else {
         // Show an alert if the scanned data does not match the expected value
